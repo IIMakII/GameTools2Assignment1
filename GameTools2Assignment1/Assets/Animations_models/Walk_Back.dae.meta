@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 384658e8447932042a978c508c3239e3
+guid: 4406c306a5076e54985ec65b752c4357
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -65,10 +65,10 @@ ModelImporter:
     100118: RightToe_End
     100120: RightToeBase
     100122: RightUpLeg
-    100124: //RootNode
-    100126: Spine
-    100128: Spine1
-    100130: Spine2
+    100124: Spine
+    100126: Spine1
+    100128: Spine2
+    100130: //RootNode
     400000: Head
     400002: HeadTop_End
     400004: Hips
@@ -131,11 +131,11 @@ ModelImporter:
     400118: RightToe_End
     400120: RightToeBase
     400122: RightUpLeg
-    400124: //RootNode
-    400126: Spine
-    400128: Spine1
-    400130: Spine2
-    7400000: Take 001
+    400124: Spine
+    400126: Spine1
+    400128: Spine2
+    400130: //RootNode
+    7400000: Walk_Back
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -164,7 +164,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk_Back
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

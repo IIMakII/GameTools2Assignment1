@@ -135,7 +135,7 @@ ModelImporter:
     400126: Spine
     400128: Spine1
     400130: Spine2
-    7400000: idle kick feet
+    7400000: Idle_KickFeet
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -166,7 +166,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle kick feet
+      name: Idle_KickFeet
       takeName: Take 001
       firstFrame: 0
       lastFrame: 98
