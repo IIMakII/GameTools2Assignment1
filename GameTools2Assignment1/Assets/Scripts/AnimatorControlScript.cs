@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MovementScript : MonoBehaviour {
+public class AnimatorControlScript : MonoBehaviour {
     private Animator anim;
     private float speed, turn;
     private int typejump = -1, Sptypejump, wallSide;
-    public bool jumping,specialjump;
+    private bool jumping,specialjump;
+    private CapsuleCollider cap; 
+
     
 	void Start () {
         anim = GetComponent<Animator>();
@@ -34,17 +36,19 @@ public class MovementScript : MonoBehaviour {
 	}
     private void OnTriggerEnter(Collider other) //if player enters jumpable object it lets animator know of this and type of jump to do 
     {
-
-        if(other.tag == "Wall")
+        if(other.tag == "Wall" || other.tag == "WallRunLeft" || other.tag == "WallRunRight")
         {
             anim.SetBool("SpecialJump", true);
+        }
+
+        if (other.tag == "Wall")
+        {
             Sptypejump = 1;
             anim.SetFloat("SpTypeJump", Sptypejump);
         }
 
         if(other.tag == "WallRunLeft")
         {
-            anim.SetBool("SpecialJump", true);
             Sptypejump = -1;
             wallSide = -1;
             anim.SetFloat("SpTypeJump", Sptypejump);
@@ -54,7 +58,6 @@ public class MovementScript : MonoBehaviour {
 
         if (other.tag == "WallRunRight")
         {
-            anim.SetBool("SpecialJump", true);
             Sptypejump = -1;
             wallSide = 1;
             anim.SetFloat("SpTypeJump", Sptypejump);
@@ -65,6 +68,10 @@ public class MovementScript : MonoBehaviour {
 
     private void OnTriggerExit(Collider other) // turns off specal jump identifier
     {
-        anim.SetBool("SpecialJump", false);
+        if (other.tag == "Wall" || other.tag == "WallRunLeft" || other.tag == "WallRunRight")
+        {
+            anim.SetBool("SpecialJump", false);
+        }
+        
     }
 }
