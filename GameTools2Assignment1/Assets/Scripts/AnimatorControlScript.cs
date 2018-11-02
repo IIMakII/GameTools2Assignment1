@@ -7,7 +7,7 @@ public class AnimatorControlScript : MonoBehaviour {
     private Animator anim;
     private float speed, turn;
     private int typejump = -1, Sptypejump, wallSide;
-    private bool jumping,specialjump;
+    private bool jumping, specialjump;
     private CapsuleCollider cap; 
 
     
@@ -26,7 +26,8 @@ public class AnimatorControlScript : MonoBehaviour {
         anim.SetFloat("Speed", speed);
 
         if (Input.GetButtonDown("Jump")) // causes player to jump and randomises the jump animation
-        {
+        { 
+
             anim.SetBool("Jump",true);
             anim.SetFloat("TypeJump", typejump);
             typejump = -typejump;  
@@ -85,4 +86,6 @@ public class AnimatorControlScript : MonoBehaviour {
         }
         
     }
+  
+  
 }
