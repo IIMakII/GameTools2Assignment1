@@ -178,7 +178,7 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -188,7 +188,39 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: JumpSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.21881838
+        functionName: FootSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 0
+        intParameter: -1
+        messageOptions: 0
+      - time: 0.47702408
+        functionName: FootSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 0
+        intParameter: -1
+        messageOptions: 0
+      - time: 0.7221007
+        functionName: FootSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 0
+        intParameter: -1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

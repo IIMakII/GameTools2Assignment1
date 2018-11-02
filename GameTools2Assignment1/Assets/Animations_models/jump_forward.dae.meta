@@ -188,7 +188,47 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.12691465
+        functionName: JumpSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 0.5
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.23851202
+        functionName: HandSlap
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5645514
+        functionName: LandSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.66739607
+        functionName: FootSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 0
+        intParameter: -1
+        messageOptions: 0
+      - time: 0.916849
+        functionName: FootSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 1
+        intParameter: -1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
