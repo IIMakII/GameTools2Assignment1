@@ -10,7 +10,7 @@ public class FootSteps : MonoBehaviour {
 	void Start () {
         fsource = GetComponent<AudioSource>();
 	}
-	 
+	 // anim events controls when this will be played 
     private void FootSound(int scale )
     {
         if (scale > 0 ) // sound edits for right foot
@@ -24,31 +24,31 @@ public class FootSteps : MonoBehaviour {
             fsource.pitch = 0.8f;
             fsource.panStereo = -0.5f;
         }
-        fsource.volume = 1;
+        fsource.volume = 1; // resets sound volume to 0 incase it was tampered by other methods
         fsource.PlayOneShot(stepSound); // play footstep then reset edits
         fsource.pitch = 1;
         fsource.panStereo = 0;
     }
 
-    private void JumpSound(float volume )
+    private void JumpSound(float volume ) 
     {
         fsource.volume = volume;
         fsource.PlayOneShot(jumpSound);
     }
 
-    private void LandSound(float volume = 1)
+    private void LandSound(float volume)
     {
         fsource.volume = volume;
         fsource.PlayOneShot(landSound);
         
     }
  
-    private void HandSlap(float volume = 1)
+    private void HandSlap(float volume)
     {
         
         fsource.volume = volume;
         fsource.PlayOneShot(stepSound);
-        //fsource.SetScheduledEndTime(1);
+        
     }
 
 }

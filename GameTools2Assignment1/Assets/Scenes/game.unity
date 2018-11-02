@@ -504,9 +504,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 14.4
-  m_Height: 141.7
+  m_Height: 142
   m_Direction: 1
-  m_Center: {x: 0.21, y: 69.8, z: 2.16}
+  m_Center: {x: 0.21, y: 70, z: 2.16}
 --- !u!135 &1245627068
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -721,6 +721,16 @@ Prefab:
         type: 2}
       propertyPath: m_Size.z
       value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65923350716881344, guid: 34fd5a7ca923d2c40bbecd3a90816e66,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65923350716881344, guid: 34fd5a7ca923d2c40bbecd3a90816e66,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34fd5a7ca923d2c40bbecd3a90816e66, type: 2}
