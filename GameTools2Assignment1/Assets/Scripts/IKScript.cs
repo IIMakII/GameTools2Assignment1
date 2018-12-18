@@ -25,17 +25,66 @@ public class IKScript : MonoBehaviour
     {
         if(enableIK == true)
         {
-            if (anim.GetFloat("TypeJump") <= 0) // IK for forward run
+            Debug.Log("IK started");
+
+                if (anim.GetFloat("TypeJump") <= 0 && anim.GetBool("SpecialJump") == false)// IK for forward run jump
+                {
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftHand); //takes positon of hand without IK taking affect.
+                    _objectAxis.y = _object.transform.position.y + (_object.transform.lossyScale.y / 2); // changes y value to match with top of object. doing this stops hand from aiming to center
+
+
+                    anim.SetIKPosition(AvatarIKGoal.LeftHand, _objectAxis);
+                    anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, anim.GetFloat("IK"));
+                    Debug.Log("run forward done");
+
+                }
+
+
+            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpecialTypeJump") <= 0) // IK for wall run
             {
-                _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftHand); //takes positon of hand without IK taking affect.
-                _objectAxis.y = _object.transform.position.y + (_object.transform.localScale.y/2); // changes y value to match with top of object. doing this stops hand from aiming to center
+                /* IK for left foot to hit surface */
+                {
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftFoot);
+
+                    if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.LeftFoot).x)
+                    {
+                        _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 2);
+                    }
+
+                    else
+                    {
+                        _objectAxis.x = _object.transform.position.x + (_object.transform.lossyScale.x / 2);
+                    }
 
 
-                anim.SetIKPosition(AvatarIKGoal.LeftHand, _objectAxis);
-                anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, anim.GetFloat("IK"));
+                    anim.SetIKPosition(AvatarIKGoal.LeftFoot, _objectAxis);
+                    anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, anim.GetFloat("IK"));
+                    Debug.Log("Left Foot done");
+                }
+
+                /* IK for right foot */
+                {
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.RightFoot);
+
+                    if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.RightFoot).x)
+                    {
+                        _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 2);
+                    }
+
+                    else
+                    {
+                        _objectAxis.x = _object.transform.position.x + (_object.transform.lossyScale.x / 2);
+                    }
+
+
+                    anim.SetIKPosition(AvatarIKGoal.RightFoot, _objectAxis);
+                    anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, anim.GetFloat("RightFoot"));
+                    Debug.Log("Right Foot done");
+                }
 
             }
-            Debug.Log("IK started");
+
+
         }
     }
 }
