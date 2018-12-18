@@ -40,7 +40,7 @@ public class IKScript : MonoBehaviour
                 }
 
 
-            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpecialTypeJump") <= 0) // IK for wall run
+            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") <= 0) // IK for wall run
             {
                 /* IK for left foot to hit surface */
                 {
@@ -82,6 +82,39 @@ public class IKScript : MonoBehaviour
                     Debug.Log("Right Foot done");
                 }
 
+            }
+
+            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") >= 0)
+            {
+                /* IK for left foot to hit surface */
+                {
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftFoot);
+                    if (_object.transform.position.z >= anim.GetIKPosition(AvatarIKGoal.LeftFoot).z)
+                    {
+                        _objectAxis.z = _object.transform.position.z - (_object.transform.lossyScale.z / 2);
+                    }
+                    else
+                    {
+                        _objectAxis.z = _object.transform.position.z + (_object.transform.lossyScale.z / 2);
+                    }
+                    anim.SetIKPosition(AvatarIKGoal.LeftFoot, _objectAxis);
+                    anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, anim.GetFloat("IK"));
+                }
+
+                /* IK for right foot */
+                {
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.RightFoot);
+                    if (_object.transform.position.z >= anim.GetIKPosition(AvatarIKGoal.RightFoot).z)
+                    {
+                        _objectAxis.z = _object.transform.position.z - (_object.transform.lossyScale.z / 2);
+                    }
+                    else
+                    {
+                        _objectAxis.z = _object.transform.position.z + (_object.transform.lossyScale.z / 2);
+                    }
+                    anim.SetIKPosition(AvatarIKGoal.RightFoot, _objectAxis);
+                    anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, anim.GetFloat("RightFoot"));
+                }
             }
 
 
