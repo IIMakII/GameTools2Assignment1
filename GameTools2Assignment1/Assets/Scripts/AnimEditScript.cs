@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FootSteps : MonoBehaviour {
+public class AnimEditScript : MonoBehaviour {
    [SerializeField] AudioClip stepSound,jumpSound,landSound;
+    private Animator anim;
+    public GameObject _object;
+    public bool enableIK = false;
+
     private AudioSource fsource;
 
 	// Use this for initialization
 	void Start () {
         fsource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
 	}
 	 // anim events controls when this will be played 
     private void FootSound(int scale )
@@ -50,5 +55,25 @@ public class FootSteps : MonoBehaviour {
         fsource.PlayOneShot(stepSound);
         
     }
+
+    private void DisableIk(int x = 0)
+    {
+        enableIK = false;
+        _object = null;
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if(enableIK == true)
+        {
+            if (anim.GetFloat("TypeJump") <= 0)
+            {
+                anim.SetIKPosition(AvatarIKGoal.LeftHand, _object.transform.position);
+                anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            }
+        }
+    }
+
+   
 
 }

@@ -221,6 +221,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: -1
         messageOptions: 0
+      - time: 0.95396817
+        functionName: DisableIK
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 69dbe49ce30ef0f4098f05cfae68d1ad,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -231,6 +239,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -255,6 +264,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 1
   humanDescription:

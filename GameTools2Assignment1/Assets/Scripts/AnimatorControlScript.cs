@@ -34,8 +34,8 @@ public class AnimatorControlScript : MonoBehaviour {
         anim.SetFloat("Speed", speed);
 
         if (Input.GetButtonDown("Jump")) // causes player to jump and randomises the jump animation and allows player to jump over objects by controling rb gravity usage and capsule config 
-           
         {
+            GetComponent<AnimEditScript>().enableIK = true; // enable ik to take effect
             toAdjust = true; // states player pressed the jump button
             time = 0;   // resets time
             rb.useGravity = false;
@@ -67,6 +67,7 @@ public class AnimatorControlScript : MonoBehaviour {
 	}
     private void OnTriggerStay(Collider other) //if player enters jumpable object it lets animator know of this and type of jump to do 
     {
+        GetComponent<AnimEditScript>()._object = other.gameObject;
         if(other.tag == "Wall" || other.tag == "WallRun")
         {
             anim.SetBool("SpecialJump", true);
