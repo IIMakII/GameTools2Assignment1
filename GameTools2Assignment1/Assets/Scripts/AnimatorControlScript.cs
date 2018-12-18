@@ -10,7 +10,7 @@ public class AnimatorControlScript : MonoBehaviour {
     private float speed, turn, time= 0, capHeight;
     Vector3  capCenter,newCapCenter; // stores acutal cap value and the change
     private int typejump = -1, Sptypejump, wallSide;
-    private bool specialjump, toAdjust = false;
+    private bool  specialjump, toAdjust = false;
     
     
 	void Start () {
@@ -21,7 +21,6 @@ public class AnimatorControlScript : MonoBehaviour {
         capCenter = cap.center;
         newCapCenter = cap.center;
         newCapCenter.y = newCapCenter.y +60; //stores the value i want to change cap center to
-
         
 	}
 	
@@ -42,10 +41,8 @@ public class AnimatorControlScript : MonoBehaviour {
             rb.useGravity = false;
 
             anim.SetBool("Jump",true);
-            GetComponent<AnimEvents>().enableIK = true; // allows ik to be used 
             anim.SetFloat("TypeJump", typejump);
             typejump = -typejump;
-            
             
         }
         if (time >= .2 && toAdjust == true)  //reduces size and center of capsule collider to allow to go over objects while jumping 
@@ -70,8 +67,6 @@ public class AnimatorControlScript : MonoBehaviour {
 	}
     private void OnTriggerStay(Collider other) //if player enters jumpable object it lets animator know of this and type of jump to do 
     {
-        GetComponent<AnimEvents>()._object = other.gameObject; // so ik will know the other object
-
         if(other.tag == "Wall" || other.tag == "WallRun")
         {
             anim.SetBool("SpecialJump", true);
@@ -112,9 +107,6 @@ public class AnimatorControlScript : MonoBehaviour {
 
     private void OnTriggerExit(Collider other) // turns off special jump identifier when  player leaves area 
     {
-        GetComponent<AnimEvents>()._object = null; // so ik forgets object
-        
-
         if (other.tag == "Wall" || other.tag == "WallRun")
         {
            anim.SetBool("SpecialJump", false);
