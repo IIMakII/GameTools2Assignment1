@@ -353,7 +353,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.75671947
-        functionName: DisableIk
+        functionName: DisableIK
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d26b44ef8e0c1144ab48656329a5fcfa,
           type: 3}

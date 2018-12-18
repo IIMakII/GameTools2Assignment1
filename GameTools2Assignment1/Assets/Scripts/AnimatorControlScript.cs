@@ -36,6 +36,7 @@ public class AnimatorControlScript : MonoBehaviour {
         if (Input.GetButtonDown("Jump")) // causes player to jump and randomises the jump animation and allows player to jump over objects by controling rb gravity usage and capsule config 
            
         {
+            GetComponent<IKScript>().enableIK = true;
             toAdjust = true; // states player pressed the jump button
             time = 0;   // resets time
             rb.useGravity = false;
@@ -67,42 +68,47 @@ public class AnimatorControlScript : MonoBehaviour {
 	}
     private void OnTriggerStay(Collider other) //if player enters jumpable object it lets animator know of this and type of jump to do 
     {
-        if(other.tag == "Wall" || other.tag == "WallRun")
+        if(other.tag != "Plane")
         {
-            anim.SetBool("SpecialJump", true);
-        }
-
-        if (other.tag == "Wall")
-        {
-            Sptypejump = 1;
-            anim.SetFloat("SpTypeJump", Sptypejump);
-        }
-
-        if (other.tag == "WallRun") // player must turn into wall to wall run //blend tree was changed to use turn intstead  to fix bug but i still cant get it to work yet 
-        { 
-           
-            Sptypejump = -1;
-            anim.SetFloat("SpTypeJump", Sptypejump);
-            if(turn >= 0.01f)
+            GetComponent<IKScript>()._object = other.gameObject;
+            if (other.tag == "Wall" || other.tag == "WallRun")
             {
-               
-                wallSide = -1;
-                anim.SetFloat("WallSide",wallSide);
+                anim.SetBool("SpecialJump", true);
             }
 
-            if (turn <= -0.01)
+            if (other.tag == "Wall")
             {
-                
-                wallSide = 1;
-                anim.SetFloat("WallSide",wallSide);
+                Sptypejump = 1;
+                anim.SetFloat("SpTypeJump", Sptypejump);
             }
 
-            else
+            if (other.tag == "WallRun") // player must turn into wall to wall run //blend tree was changed to use turn intstead  to fix bug but i still cant get it to work yet 
             {
-                anim.SetBool("SpecialJump", false);
-            }
 
+                Sptypejump = -1;
+                anim.SetFloat("SpTypeJump", Sptypejump);
+                if (turn >= 0.01f)
+                {
+
+                    wallSide = -1;
+                    anim.SetFloat("WallSide", wallSide);
+                }
+
+                if (turn <= -0.01)
+                {
+
+                    wallSide = 1;
+                    anim.SetFloat("WallSide", wallSide);
+                }
+
+                else
+                {
+                    anim.SetBool("SpecialJump", false);
+                }
+
+            }
         }
+        
     }
 
     private void OnTriggerExit(Collider other) // turns off special jump identifier when  player leaves area 
