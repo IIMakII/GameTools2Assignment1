@@ -73,8 +73,12 @@ public class NpcController : MonoBehaviour
 
             if (Vector3.Distance(wayPoints[currentPoint].transform.position, this.transform.position) <= navAgent.stoppingDistance) // if waypoint within stopping distance chamges to next waypoint
             {
-                currentPoint = (currentPoint + 1) % wayPoints.Count; // makes sure it doesnt go over lenght of list
-                Debug.Log("currentPoint is" + currentPoint);
+                if (currentPoint >= wayPoints.Count)
+                {
+                    currentPoint = (currentPoint + 1) % wayPoints.Count; // makes sure it doesnt go over lenght of list
+                    Debug.Log("currentPoint is" + currentPoint);
+                }
+                
             }
           
          }
