@@ -6,7 +6,7 @@ public class IKScript : MonoBehaviour
 {
     private Animator anim;
     public GameObject _object;
-    public bool enableIK = false; // for if IK should be used or not 
+    public bool enableIK = false;
     private Vector3 _objectAxis;
 
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class IKScript : MonoBehaviour
         anim = GetComponent<Animator>();
     }
  
-    private void DisableIK() // event to turn off IK
+    private void DisableIK()
     {
         enableIK = false;
         Debug.Log(enableIK);
@@ -23,7 +23,7 @@ public class IKScript : MonoBehaviour
 
     private void OnAnimatorIK(int layerIndex)
     {
-        if(enableIK == true) 
+        if(enableIK == true)
         {
             Debug.Log("IK started");
 
@@ -42,11 +42,11 @@ public class IKScript : MonoBehaviour
 
             if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") < 0) // IK for wall run
             {
-                // IK for left foot to hit surface 
+                /* IK for left foot to hit surface */
                 {
-                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftFoot); //gets orignial IK poosition
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftFoot);
 
-                    if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.LeftFoot).x) //if's are used to locate the surface of object depending on what side they are on
+                    if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.LeftFoot).x)
                     {
                         _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 3);
                     }
@@ -62,11 +62,11 @@ public class IKScript : MonoBehaviour
                     Debug.Log("Left Foot done");
                 }
 
-                // IK for right foot 
+                /* IK for right foot */
                 {
-                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.RightFoot); //gets orignial IK poosition
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.RightFoot);
 
-                    if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.RightFoot).x) //if's are used to locate the surface of object depending on what side they are on
+                    if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.RightFoot).x)
                     {
                         _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 3);
                     }
@@ -88,9 +88,8 @@ public class IKScript : MonoBehaviour
             {
                 /* IK for left foot to hit surface */
                 {
-                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftFoot);  //gets orignial IK poosition
-
-                    if (_object.transform.position.z >= anim.GetIKPosition(AvatarIKGoal.LeftFoot).z) //if's are used to locate the surface of object depending on what side they are on
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftFoot);
+                    if (_object.transform.position.z >= anim.GetIKPosition(AvatarIKGoal.LeftFoot).z)
                     {
                         _objectAxis.z = _object.transform.position.z - (_object.transform.lossyScale.z / 2);
                     }
@@ -104,9 +103,8 @@ public class IKScript : MonoBehaviour
 
                 /* IK for right foot */
                 {
-                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.RightFoot);  //gets orignial IK poosition
-
-                    if (_object.transform.position.z >= anim.GetIKPosition(AvatarIKGoal.RightFoot).z) //if's are used to locate the surface of object depending on what side they are on
+                    _objectAxis = anim.GetIKPosition(AvatarIKGoal.RightFoot);
+                    if (_object.transform.position.z >= anim.GetIKPosition(AvatarIKGoal.RightFoot).z)
                     {
                         _objectAxis.z = _object.transform.position.z - (_object.transform.lossyScale.z / 2);
                     }

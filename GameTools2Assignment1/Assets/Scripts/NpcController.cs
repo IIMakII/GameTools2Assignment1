@@ -6,7 +6,7 @@ using UnityEngine;
 public class NpcController : MonoBehaviour
 {
     private int currentPoint = 0;
-    private bool following = false; // used to check if npc is following player or not
+    private bool following = false;
     private NavMeshAgent navAgent;
     private Animator anim;
     [SerializeField] GameObject target;
@@ -27,7 +27,7 @@ public class NpcController : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter(Collider other) // when player enters triggers tells npc to follow player
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
@@ -36,7 +36,7 @@ public class NpcController : MonoBehaviour
         }   
        
     }
-    private void OnTriggerExit(Collider other)  // when player enters triggers tells npc to follow player
+    private void OnTriggerExit(Collider other)
     {
         if(other.tag == "Player")
         {
@@ -46,17 +46,17 @@ public class NpcController : MonoBehaviour
 
     private void followPlayer()
     {
-        if(following == true) // if player within range
+        if(following == true)
         {
-            anim.SetFloat("Speed", 0.4f); //increases speed
-            navAgent.SetDestination(target.transform.position); // sets target position to the player
+            anim.SetFloat("Speed", 0.4f);
+            navAgent.SetDestination(target.transform.position);
 
-            if (Vector3.Distance(target.transform.position, this.transform.position) <= navAgent.stoppingDistance) // player is within stopping distance
+            if (Vector3.Distance(target.transform.position, this.transform.position) <= navAgent.stoppingDistance)
             {
-                Vector3 direction = (target.transform.position - this.transform.position).normalized; //gets the direction
+                Vector3 direction = (target.transform.position - this.transform.position).normalized;
                 direction.y = 0;
 
-                Quaternion rotate = Quaternion.LookRotation(direction); 
+                Quaternion rotate = Quaternion.LookRotation(direction);
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, rotate, Time.deltaTime * 2);
                 anim.SetFloat("Speed", 0f);
             }
@@ -68,12 +68,12 @@ public class NpcController : MonoBehaviour
          if (following == false)
          {
             anim.SetFloat("Speed", 0.1f);
-            navAgent.SetDestination(wayPoints[currentPoint].transform.position); //set postion to the waypoint
+            navAgent.SetDestination(wayPoints[currentPoint].transform.position);
             Debug.Log("currentPoint is" + currentPoint);
 
-            if (Vector3.Distance(wayPoints[currentPoint].transform.position, this.transform.position) <= navAgent.stoppingDistance) // if waypoint within stopping distance chamges to next waypoint
+            if (Vector3.Distance(wayPoints[currentPoint].transform.position, this.transform.position) <= navAgent.stoppingDistance)
             {
-                currentPoint = (currentPoint + 1) % wayPoints.Count; // makes sure it doesnt go over lenght of list
+                currentPoint = (currentPoint + 1) % wayPoints.Count;
                 Debug.Log("currentPoint is" + currentPoint);
             }
           
