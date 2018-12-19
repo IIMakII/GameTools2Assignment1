@@ -48,12 +48,12 @@ public class IKScript : MonoBehaviour
 
                     if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.LeftFoot).x) //if's are used to locate the surface of object depending on what side they are on
                     {
-                        _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 3);
+                        _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 2);
                     }
 
                     else
                     {
-                        _objectAxis.x = _object.transform.position.x + (_object.transform.lossyScale.x / 3);
+                        _objectAxis.x = _object.transform.position.x + (_object.transform.lossyScale.x / 2);
                     }
 
 
@@ -68,12 +68,12 @@ public class IKScript : MonoBehaviour
 
                     if (_object.transform.position.x > anim.GetIKPosition(AvatarIKGoal.RightFoot).x) //if's are used to locate the surface of object depending on what side they are on
                     {
-                        _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 3);
+                        _objectAxis.x = _object.transform.position.x - (_object.transform.lossyScale.x / 2);
                     }
 
                     else
                     {
-                        _objectAxis.x = _object.transform.position.x + (_object.transform.lossyScale.x / 3);
+                        _objectAxis.x = _object.transform.position.x + (_object.transform.lossyScale.x / 2);
                     }
 
 
