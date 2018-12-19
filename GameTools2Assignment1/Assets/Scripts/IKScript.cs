@@ -27,7 +27,7 @@ public class IKScript : MonoBehaviour
         {
             Debug.Log("IK started");
 
-                if (anim.GetFloat("TypeJump") <= 0 && anim.GetBool("SpecialJump") == false)// IK for forward run jump
+                if (anim.GetFloat("TypeJump") <= 0 && anim.GetBool("SpecialJump") == false)// IK for forward run jumpforward
                 {
                     _objectAxis = anim.GetIKPosition(AvatarIKGoal.LeftHand); //takes positon of hand without IK taking affect.
                     _objectAxis.y = _object.transform.position.y + (_object.transform.lossyScale.y / 2); // changes y value to match with top of object. doing this stops hand from aiming to center
@@ -40,7 +40,7 @@ public class IKScript : MonoBehaviour
                 }
 
 
-            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") <= 0) // IK for wall run
+            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") < 0) // IK for wall run
             {
                 /* IK for left foot to hit surface */
                 {
@@ -84,7 +84,7 @@ public class IKScript : MonoBehaviour
 
             }
 
-            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") >= 0)
+            if(anim.GetBool("SpecialJump") == true && anim.GetFloat("SpTypeJump") > 0) // wall run
             {
                 /* IK for left foot to hit surface */
                 {
