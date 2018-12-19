@@ -6,8 +6,9 @@ public class FootSteps : MonoBehaviour {
    [SerializeField] AudioClip stepSound,jumpSound,landSound;
     private AudioSource fsource;
 
+    // script used for events
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         fsource = GetComponent<AudioSource>();
 	}
 	 // anim events controls when this will be played 
